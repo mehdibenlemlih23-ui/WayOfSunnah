@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WayOfSunnah</title>
+<meta name="description" content="WayOfSunnah: premium digital planners, workbooks and trackers to help the ummah live the Sunnah of the Prophet Muhammad ﷺ, one small habit at a time.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f3d33'/%3E%3Cg fill='none' stroke='%23c9a24a' stroke-width='6'%3E%3Crect x='27' y='27' width='46' height='46'/%3E%3Crect x='27' y='27' width='46' height='46' transform='rotate(45 50 50)'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+:root{
+  --emerald:#0f3d33; --emerald-2:#15503f; --emerald-3:#1d6a54;
+  --gold:#c9a24a; --gold-soft:#e6cf94;
+  --cream:#f7f3ea; --paper:#fffdf8; --ink:#1b2621; --muted:#5d6b64;
+  --line:rgba(15,61,51,.12); --shadow:0 18px 40px -18px rgba(15,61,51,.35);
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.arabic{font-family:Amiri,serif;direction:rtl}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.1;color:var(--emerald)}
+h2{font-size:clamp(2rem,4vw,2.9rem)}
+.lead{color:var(--muted);font-size:1.05rem;max-width:620px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:.95rem;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;font-family:inherit}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:linear-gradient(135deg,#d8b562,#b98f34);color:#1b1405;box-shadow:0 10px 24px -10px rgba(185,143,52,.8)}
+.btn-ghost{border-color:rgba(230,207,148,.5);color:var(--gold-soft)}
+.btn-dark{background:var(--emerald);color:#fff}
+
+.pattern{position:absolute;inset:0;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23e6cf94' stroke-width='1.2'%3E%3Crect x='22' y='22' width='36' height='36'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3Cpath d='M0 0L22 22M80 0L58 22M0 80L22 58M80 80L58 58'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+
+header{position:sticky;top:0;z-index:50;background:rgba(15,61,51,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,162,74,.25)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px;color:#fff}
+.logo span{font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:700;letter-spacing:.02em}
+.logo b{color:var(--gold)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.82);font-size:.92rem;font-weight:500}
+.nav-links a:hover{color:var(--gold-soft)}
+.nav-links a.btn{color:#1b1405;padding:10px 20px}
+.menu-btn{display:none;background:none;border:0;color:#fff;cursor:pointer}
+
+.hero{position:relative;background:radial-gradient(ellipse at 70% 20%,var(--emerald-3),var(--emerald) 55%,#0a2a23);color:#fff;overflow:hidden;padding:90px 0 110px}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.hero .arabic{font-size:1.9rem;color:var(--gold-soft);margin-bottom:6px;text-align:left}
+.hero .ref{font-size:.85rem;color:rgba(255,255,255,.6);margin-bottom:28px}
+.hero h1{color:#fff;font-size:clamp(2.6rem,6vw,4.4rem);margin-bottom:22px}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p.lead{color:rgba(255,255,255,.78);margin-bottom:36px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-art{position:relative;aspect-ratio:1;max-width:420px;justify-self:center;width:100%}
+.hero-art .ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(201,162,74,.35)}
+.hero-art .ring.r2{inset:8%;border-style:dashed;animation:spin 80s linear infinite}
+.hero-art svg{position:absolute;inset:16%;width:68%;height:68%;animation:spin 120s linear infinite reverse}
+.hero-art .center{position:absolute;inset:0;display:grid;place-items:center;font-family:Amiri,serif;font-size:3.2rem;color:var(--gold)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.trust{background:var(--paper);border-bottom:1px solid var(--line)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:26px 20px}
+.trust .wrap>div{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--muted)}
+.trust svg{flex:none;color:var(--gold)}
+.trust strong{display:block;color:var(--emerald);font-size:.95rem}
+
+section{padding:100px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:44px;flex-wrap:wrap}
+.sec-head .eyebrow{margin-bottom:10px;display:block}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:var(--paper);font:500 .88rem Inter,sans-serif;color:var(--muted);cursor:pointer;transition:.2s}
+.chip.active,.chip:hover{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.cover{position:relative;aspect-ratio:4/3;display:grid;place-items:center;overflow:hidden}
+.cover .pattern{opacity:.14}
+.cover .book{position:relative;width:52%;aspect-ratio:3/4;border-radius:4px 10px 10px 4px;background:var(--paper);box-shadow:-8px 12px 28px -8px rgba(0,0,0,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px;border-left:6px solid var(--gold)}
+.cover .book .ar{font-family:Amiri,serif;font-size:1.25rem;color:var(--gold);line-height:1.3}
+.cover .book .t{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.05rem;line-height:1.1;margin-top:6px}
+.cover .book .brand{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;margin-top:10px;opacity:.6}
+.badge{position:absolute;z-index:2;top:14px;left:14px;background:var(--gold);color:#1b1405;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:999px;letter-spacing:.04em}
+.card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.card-body .cat{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.card-body h3{font-size:1.45rem;margin:6px 0 8px}
+.card-body p{color:var(--muted);font-size:.92rem;flex:1}
+.card-body ul{list-style:none;margin:14px 0 18px;display:flex;flex-wrap:wrap;gap:6px}
+.card-body li{font-size:.75rem;background:var(--cream);border-radius:6px;padding:4px 9px;color:var(--emerald)}
+.buy{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:16px}
+.price{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:700;color:var(--emerald)}
+.price s{font-size:1rem;color:var(--muted);font-weight:500;margin-left:6px}
+.buy .btn{padding:10px 18px;font-size:.88rem}
+
+.bundle{position:relative;background:var(--emerald);color:#fff;border-radius:28px;overflow:hidden;padding:60px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.bundle h2{color:#fff}
+.bundle p{color:rgba(255,255,255,.75);margin:14px 0 26px}
+.bundle ul{list-style:none;display:grid;gap:10px}
+.bundle li{display:flex;gap:10px;align-items:center;color:rgba(255,255,255,.9)}
+.bundle li::before{content:"";width:8px;height:8px;background:var(--gold);transform:rotate(45deg);flex:none}
+.bundle-price{position:relative;text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(201,162,74,.4);border-radius:22px;padding:40px 24px}
+.bundle-price .big{font-family:"Cormorant Garamond",serif;font-size:4.2rem;font-weight:700;color:var(--gold);line-height:1}
+.bundle-price s{color:rgba(255,255,255,.5)}
+.bundle-price small{display:block;margin:10px 0 24px;color:rgba(255,255,255,.65)}
+
+.alt{background:var(--paper)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.quote{border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;background:var(--cream)}
+.quote .arabic{font-size:1.45rem;color:var(--emerald);line-height:1.8;margin-bottom:14px}
+.quote p{font-family:"Cormorant Garamond",serif;font-size:1.3rem;line-height:1.35}
+.quote cite{display:block;margin-top:16px;font-style:normal;font-size:.8rem;letter-spacing:.08em;color:var(--gold);font-weight:600;text-transform:uppercase}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.step{padding:30px;border-radius:var(--radius);border:1px solid var(--line);background:var(--paper)}
+.step .n{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--emerald);color:var(--gold);font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:700;margin-bottom:18px}
+.step h3{font-size:1.4rem;margin-bottom:6px}
+.step p{color:var(--muted);font-size:.93rem}
+
+.faq{max-width:780px;margin:0 auto}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--emerald)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:Inter,sans-serif;color:var(--gold);font-size:1.5rem;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin-top:12px}
+
+.news{position:relative;background:linear-gradient(135deg,var(--emerald),#0a2a23);color:#fff;text-align:center;overflow:hidden}
+.news h2{color:#fff;margin:10px 0 12px}
+.news p{color:rgba(255,255,255,.75);max-width:540px;margin:0 auto 30px}
+.news form{display:flex;gap:10px;max-width:480px;margin:0 auto}
+.news input{flex:1;min-width:0;padding:14px 20px;border-radius:999px;border:1px solid rgba(201,162,74,.4);background:rgba(255,255,255,.07);color:#fff;font:inherit}
+.news input::placeholder{color:rgba(255,255,255,.5)}
+.news .msg{margin-top:16px;color:var(--gold-soft);min-height:1.5em}
+
+footer{background:#0a2a23;color:rgba(255,255,255,.6);padding:60px 0 30px;font-size:.9rem}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer h4{color:#fff;font-family:"Cormorant Garamond",serif;font-size:1.2rem;margin-bottom:12px}
+footer .col a{display:block;margin-bottom:8px}
+footer a:hover{color:var(--gold-soft)}
+.copy{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,140px);background:var(--emerald);color:#fff;padding:14px 22px;border-radius:12px;border:1px solid var(--gold);box-shadow:var(--shadow);transition:transform .3s,opacity .3s;opacity:0;z-index:100;font-size:.92rem;max-width:calc(100% - 32px);text-align:center}
+.toast.show{transform:translate(-50%,0);opacity:1}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .hero-grid,.bundle{grid-template-columns:1fr}
+  .hero-art{max-width:280px}
+  .grid,.why-grid,.steps{grid-template-columns:1fr 1fr}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .bundle{padding:40px 28px}
+}
+@media (max-width:680px){
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:var(--emerald);padding:24px;gap:18px;border-bottom:1px solid rgba(201,162,74,.25)}
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .grid,.why-grid,.steps,.foot,.trust .wrap{grid-template-columns:1fr}
+  section{padding:70px 0}
+  .hero{padding:60px 0 80px}
+  .news form{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="WayOfSunnah home">
+      <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#c9a24a" stroke-width="6"><rect x="24" y="24" width="52" height="52"/><rect x="24" y="24" width="52" height="52" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="10"/></g></svg>
+      <span>WayOf<b>Sunnah</b></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#shop">Shop</a>
+      <a href="#bundle">Bundle</a>
+      <a href="#why">Why the Sunnah</a>
+      <a href="#faq">FAQ</a>
+      <a href="#shop" class="btn btn-gold">Browse products</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="pattern"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="arabic">وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ</div>
+      <div class="ref">“And indeed, you are of a great moral character.” (Al-Qalam 68:4)</div>
+      <h1>Live the Sunnah,<br><em>one small habit</em> at a time.</h1>
+      <p class="lead">Beautifully designed planners, workbooks and trackers that turn the daily practices of the Prophet Muhammad ﷺ into habits you can keep, for you, your family and your children.</p>
+      <div class="hero-actions">
+        <a href="#shop" class="btn btn-gold">Explore the collection
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#bundle" class="btn btn-ghost">See the Complete Bundle</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="ring"></div><div class="ring r2"></div>
+      <svg viewBox="0 0 200 200"><g fill="none" stroke="#c9a24a" stroke-width="1.4">
+        <rect x="45" y="45" width="110" height="110"/><rect x="45" y="45" width="110" height="110" transform="rotate(45 100 100)"/>
+        <rect x="65" y="65" width="70" height="70" transform="rotate(22.5 100 100)"/><rect x="65" y="65" width="70" height="70" transform="rotate(67.5 100 100)"/>
+        <circle cx="100" cy="100" r="78"/><circle cx="100" cy="100" r="30"/></g></svg>
+      <div class="center">ﷺ</div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3h16v-3"/></svg><div><strong>Instant download</strong>Access right after checkout</div></div>
+    <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h11a4 4 0 014 4v10H8a4 4 0 01-4-4z"/><path d="M8 9h7M8 13h5"/></svg><div><strong>Referenced sources</strong>Every hadith cited with its collection</div></div>
+    <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12a8 8 0 0114-5.3M20 12a8 8 0 01-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><div><strong>Free lifetime updates</strong>New editions at no extra cost</div></div>
+    <div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg><div><strong>Print or digital</strong>Tablet-friendly and printable</div></div>
+  </div>
+</div>
+
+<section id="shop">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">The Collection</span>
+        <h2>Tools for a Sunnah-centred life</h2>
+      </div>
+      <div class="filters" id="filters">
+        <button class="chip active" data-f="all">All</button>
+        <button class="chip" data-f="Planners">Planners</button>
+        <button class="chip" data-f="Workbooks">Workbooks</button>
+        <button class="chip" data-f="Family &amp; Kids">Family &amp; Kids</button>
+        <button class="chip" data-f="Adhkar">Adhkar</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="bundle" style="padding-top:0">
+  <div class="wrap">
+    <div class="bundle reveal">
+      <div class="pattern"></div>
+      <div style="position:relative">
+        <span class="eyebrow">Best value</span>
+        <h2>The Complete Sunnah Bundle</h2>
+        <p>Every product in the WayOfSunnah collection in one download: everything you need to bring the Sunnah into your mornings, your home and your children’s hearts.</p>
+        <ul>
+          <li>All 6 products, plus future additions</li>
+          <li>Printable PDFs and tablet-ready versions</li>
+          <li>One payment, lifetime access and updates</li>
+        </ul>
+      </div>
+      <div class="bundle-price">
+        <div class="big">$39</div>
+        <s>$79 if bought separately</s>
+        <small>One-time payment · Instant download</small>
+        <a href="#" class="btn btn-gold buy-link" data-id="bundle">Get the bundle</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Why the Sunnah</span>
+        <h2>Small, consistent steps<br>on a beautiful path</h2>
+      </div>
+      <p class="lead">Our products are built around a principle the Prophet ﷺ taught: consistency over intensity. Small daily practices, kept faithfully, transform a life.</p>
+    </div>
+    <div class="why-grid">
+      <div class="quote reveal">
+        <div class="arabic">لَّقَدْ كَانَ لَكُمْ فِي رَسُولِ اللَّهِ أُسْوَةٌ حَسَنَةٌ</div>
+        <p>“There has certainly been for you in the Messenger of Allah an excellent example.”</p>
+        <cite>Al-Ahzab 33:21</cite>
+      </div>
+      <div class="quote reveal">
+        <p>“The most beloved deeds to Allah are those done consistently, even if they are small.”</p>
+        <cite>Sahih al-Bukhari 6464 · Sahih Muslim 783</cite>
+      </div>
+      <div class="quote reveal">
+        <p>“Actions are only by intentions, and every person will have only what they intended.”</p>
+        <cite>Sahih al-Bukhari 1 · Sahih Muslim 1907</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">How it works</span><h2>From checkout to practice in minutes</h2></div></div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h3>Choose your tool</h3><p>Pick a planner, workbook or tracker, or the full bundle, based on the habit you want to build.</p></div>
+      <div class="step reveal"><div class="n">2</div><h3>Download instantly</h3><p>Receive your files by email right after payment. Print them or use them on your tablet.</p></div>
+      <div class="step reveal"><div class="n">3</div><h3>Revive a Sunnah daily</h3><p>Follow the guided pages, track your consistency and watch small habits grow into a way of life.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:40px"><span class="eyebrow">Questions</span><h2 style="margin-top:10px">Frequently asked</h2></div>
+    <div class="faq">
+      <details><summary>What format are the products?</summary><p>All products are high-quality PDFs, designed for A4/Letter printing and for annotation apps such as GoodNotes or Notability on tablets.</p></details>
+      <details><summary>Where do the hadith come from?</summary><p>Every hadith included is referenced with its collection and number, so you can check the source yourself and learn more with a trusted teacher.</p></details>
+      <details><summary>How do I receive my purchase?</summary><p>Checkout is handled by a secure payment platform. Your download link is emailed to you immediately after payment.</p></details>
+      <details><summary>Are these suitable for children and new Muslims?</summary><p>Yes. The Family &amp; Kids pack is made for ages 5–11, and our workbooks start with the simplest Sunnahs so anyone can begin.</p></details>
+      <details><summary>Can I get a refund?</summary><p>Because the products are digital downloads, sales are generally final. If something is wrong with your file, contact us and we will make it right.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="news">
+  <div class="pattern"></div>
+  <div class="wrap" style="position:relative">
+    <span class="eyebrow">A Sunnah every Friday</span>
+    <h2>Join the WayOfSunnah letter</h2>
+    <p>One short, referenced Sunnah in your inbox each Jumu‘ah, plus early access to new releases.</p>
+    <form id="newsForm">
+      <input type="email" required placeholder="Your email address" aria-label="Email address">
+      <button class="btn btn-gold" type="submit">Subscribe</button>
+    </form>
+    <div class="msg" id="newsMsg"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#top" class="logo" style="margin-bottom:14px">
+          <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#c9a24a" stroke-width="6"><rect x="24" y="24" width="52" height="52"/><rect x="24" y="24" width="52" height="52" transform="rotate(45 50 50)"/><circle cx="50" cy="50" r="10"/></g></svg>
+          <span>WayOf<b>Sunnah</b></span>
+        </a>
+        <p>Helping the ummah follow the example of the Prophet Muhammad ﷺ, one small, consistent step at a time.</p>
+      </div>
+      <div class="col"><h4>Shop</h4><a href="#shop">All products</a><a href="#bundle">Complete bundle</a><a href="#faq">FAQ</a></div>
+      <div class="col"><h4>Connect</h4><a href="mailto:hello@wayofsunnah.com">hello@wayofsunnah.com</a><a href="#">Instagram</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="copy"><span>© <span id="yr"></span> WayOfSunnah. All rights reserved.</span><span class="arabic">بسم الله الرحمن الرحيم</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* =========================================================
+   EDIT YOUR PRODUCTS HERE
+   buyUrl: paste your checkout link (Gumroad, Payhip, Lemon Squeezy...)
+   Leave it as "" until your checkout page is ready.
+   ========================================================= */
+const BUNDLE_URL = "";
+const PRODUCTS = [
+  { id:"planner", title:"Sunnah Daily Planner", ar:"يوم على السنة", cat:"Planners", price:14, old:19, badge:"Bestseller",
+    desc:"Structure your day around the five prayers with Sunnah prayers, adhkar checkpoints and a gratitude page.",
+    tags:["90 days","Printable + tablet","PDF"], color:"#0f3d33", buyUrl:"" },
+  { id:"forty", title:"40 Sunnahs in 40 Days", ar:"أربعون سنة", cat:"Workbooks", price:17, old:null, badge:"New",
+    desc:"A guided challenge: one referenced Sunnah a day, with a short explanation, an action step and a reflection.",
+    tags:["40 lessons","Hadith references","Journal pages"], color:"#6b4a1f", buyUrl:"" },
+  { id:"adhkar", title:"Morning & Evening Adhkar Cards", ar:"أذكار الصباح والمساء", cat:"Adhkar", price:9, old:null, badge:null,
+    desc:"Elegant cards with Arabic, transliteration and meaning, ready to print, laminate and keep by your bed.",
+    tags:["Arabic + English","Printable cards","Phone wallpapers"], color:"#1d4f6b", buyUrl:"" },
+  { id:"tracker", title:"Prophetic Habits Tracker", ar:"متابعة العادات", cat:"Planners", price:12, old:null, badge:null,
+    desc:"Track fasting Mondays & Thursdays, Duha, Witr, Qur’an and more with monthly and yearly overviews.",
+    tags:["12 months","Habit streaks","PDF"], color:"#3e2f5b", buyUrl:"" },
+  { id:"kids", title:"Little Sunnah Stars Kids Pack", ar:"نجوم السنة", cat:"Family & Kids", price:15, old:null, badge:"Family favourite",
+    desc:"Colouring pages, reward charts and simple Sunnah stories to help children love the Prophet ﷺ.",
+    tags:["Ages 5–11","30+ pages","Reward chart"], color:"#8a5a2b", buyUrl:"" },
+  { id:"character", title:"Prophetic Character Workbook", ar:"الأخلاق النبوية", cat:"Workbooks", price:12, old:null, badge:null,
+    desc:"Reflect on the Prophet’s ﷺ mercy, honesty, patience and generosity, with weekly practical exercises.",
+    tags:["12 weeks","Reflection prompts","PDF"], color:"#274b3c", buyUrl:"" }
+];
+
+const grid = document.getElementById('grid');
+const toast = document.getElementById('toast');
+let toastT;
+function showToast(msg){ toast.textContent = msg; toast.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(()=>toast.classList.remove('show'), 3000); }
+
+function render(filter){
+  const items = PRODUCTS.filter(p => filter==='all' || p.cat===filter);
+  grid.innerHTML = items.map(p => `
+    <article class="card">
+      <div class="cover" style="background:${p.color}">
+        <div class="pattern"></div>
+        ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
+        <div class="book" style="color:${p.color}">
+          <div class="ar">${p.ar}</div>
+          <div class="t">${p.title}</div>
+          <div class="brand">WayOfSunnah</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <span class="cat">${p.cat}</span>
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <ul>${p.tags.map(t=>`<li>${t}</li>`).join('')}</ul>
+        <div class="buy">
+          <div class="price">$${p.price}${p.old ? `<s>$${p.old}</s>` : ''}</div>
+          <a href="#" class="btn btn-dark buy-link" data-id="${p.id}">Buy now</a>
+        </div>
+      </div>
+    </article>`).join('');
+}
+render('all');
+
+document.getElementById('filters').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if(!b) return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  b.classList.add('active'); render(b.dataset.f);
+});
+
+document.addEventListener('click', e => {
+  const a = e.target.closest('.buy-link'); if(!a) return;
+  e.preventDefault();
+  const url = a.dataset.id==='bundle' ? BUNDLE_URL : (PRODUCTS.find(p=>p.id===a.dataset.id)||{}).buyUrl;
+  if(url){ window.open(url,'_blank','noopener'); return; }
+  showToast('Checkout opens soon, in shā’ Allāh. This product is launching shortly.');
+});
+
+document.getElementById('newsForm').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('newsMsg').textContent = 'Jazāk Allāhu khayran! You’re on the list.';
+  e.target.reset();
+});
+
+const menuBtn = document.getElementById('menuBtn'), navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', ()=> navLinks.classList.toggle('open'));
+navLinks.addEventListener('click', e => { if(e.target.closest('a')) navLinks.classList.remove('open'); });
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+if('IntersectionObserver' in window){
+  const io = new IntersectionObserver(es => es.forEach(x => { if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+</script>
+</body>
+</html>
